@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="{{ "/" | relURL }}" class="site-brand">
+      <span class="brand-mark">//</span>
+      <span class="brand-name">REINFORCEDKNOWLEDGE</span>
+      <span class="brand-sep"> ── </span>
+      <span class="last-sync">LAST_SYNC {{ now.Format "2006.01.02" }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="{{ "/posts/" | relURL }}">BLOG</a>
+      <span class="site-nav-sep" aria-hidden="true">·</span>
+      <a href="{{ "/posts/about/" | relURL }}">ABOUT</a>
+    </nav>
+  </div>
+</header>

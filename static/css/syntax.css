@@ -1,0 +1,93 @@
+/* syntax.css: Chroma syntax theme for Reinforced Knowledge.
+   Replaces Hugo's default monokai. All colors reference tokens.css.
+   Requires `noClasses = false` in hugo.toml. */
+
+/* Base: the pre/code container is styled in base.css; this is for spans inside */
+.chroma {
+  background: transparent;     /* let the pre container show through */
+  color: var(--fg-0);
+}
+
+/* Line numbers (off by default in hugo.toml; styled for if they're enabled) */
+.chroma .ln, .chroma .lnt {
+  color: var(--border-0);
+  user-select: none;
+  margin-right: var(--space-sm);
+}
+
+/* Line highlight */
+.chroma .hl {
+  background: oklch(24% 0.018 340 / 0.5);
+}
+
+/* Comments: muted italic so they recede */
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .cp,
+.chroma .cpf, .chroma .c1, .chroma .cs {
+  color: var(--fg-2);
+  font-style: italic;
+}
+
+/* Keywords: warm primary */
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn,
+.chroma .kp, .chroma .kr, .chroma .kt {
+  color: var(--accent-warm);
+}
+
+/* Strings: cool secondary */
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl,
+.chroma .sd, .chroma .s2, .chroma .se, .chroma .sh, .chroma .si,
+.chroma .sx, .chroma .sr, .chroma .s1, .chroma .ss {
+  color: var(--accent-cool);
+}
+
+/* Numbers: deeper variant so they don't compete with strings */
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
+.chroma .mi, .chroma .il, .chroma .mo {
+  color: var(--accent-cool-deep);
+}
+
+/* Function and method names */
+.chroma .nf, .chroma .fm {
+  color: var(--accent-warm-soft);
+}
+
+/* Class names: body color, semibold (structural, not chromatic) */
+.chroma .nc {
+  color: var(--fg-0);
+  font-weight: var(--fw-semibold);
+}
+
+/* Builtins, constants, decorators */
+.chroma .nb { color: var(--fg-0); }
+.chroma .no { color: var(--accent-warm-soft); }
+.chroma .nd { color: var(--accent-cool-soft); }
+.chroma .ni { color: var(--fg-1); }
+.chroma .ne { color: var(--accent-warm-deep); }
+.chroma .nl { color: var(--fg-1); }
+.chroma .nn { color: var(--fg-0); }
+.chroma .nt { color: var(--accent-warm-soft); }
+.chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm {
+  color: var(--fg-0);
+}
+
+/* Operators & punctuation: quieter so they don't shout */
+.chroma .o, .chroma .ow { color: var(--fg-1); }
+.chroma .p { color: var(--fg-1); }
+
+/* Errors: wavy underline */
+.chroma .err {
+  color: var(--accent-warm-deep);
+  text-decoration: underline wavy;
+  text-underline-offset: 0.18em;
+}
+
+/* Git diff styling */
+.chroma .gd { color: var(--accent-warm-soft); background: oklch(70% 0.18 340 / 0.08); }
+.chroma .gi { color: var(--accent-cool-soft); background: oklch(82% 0.17 155 / 0.08); }
+.chroma .gh { color: var(--fg-0); font-weight: var(--fw-medium); }
+.chroma .gs { font-weight: var(--fw-semibold); }
+.chroma .ge { font-style: italic; }
+.chroma .gr { color: var(--accent-warm-deep); }
+.chroma .gt { color: var(--accent-warm-deep); }
+.chroma .gp { color: var(--fg-2); }
+.chroma .gu { color: var(--fg-1); }

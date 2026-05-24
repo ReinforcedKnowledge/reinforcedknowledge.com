@@ -1,0 +1,38 @@
+{{- $articles := .articles -}}
+
+<section class="panel panel-log" data-panel="log">
+  <header class="panel-header">
+    <h2 class="panel-title">[LOG]</h2>
+    <button class="panel-toggle" type="button" aria-label="Toggle LOG panel" aria-expanded="true" data-target="log">[−]</button>
+  </header>
+  <div class="panel-body">
+    <div class="log-filter" id="log-filter" hidden aria-live="polite">
+      <span class="log-filter-arrow" aria-hidden="true">▸</span>
+      <span class="log-filter-label">FILTER:</span>
+      <span class="log-filter-value" id="log-filter-value"></span>
+      <button class="log-filter-clear" id="log-filter-clear" type="button" aria-label="Clear filter">[×]</button>
+    </div>
+    <ul class="log-list" id="log-list">
+      {{- range $page := $articles -}}
+        {{- $isNew := lt (sub now.Unix $page.Date.Unix) 604800 -}}
+        {{- $catSlugs := slice -}}
+        {{- range $page.Params.categories -}}{{- $catSlugs = $catSlugs | append (urlize .) -}}{{- end -}}
+        {{- $tagSlugs := slice -}}
+        {{- range (default (slice) $page.Params.tags) -}}{{- $tagSlugs = $tagSlugs | append (urlize .) -}}{{- end -}}
+      <li class="log-entry"
+          data-slug="{{ $page.File.BaseFileName }}"
+          data-categories="{{ delimit $catSlugs " " }}"
+          data-tags="{{ delimit $tagSlugs " " }}">
+        <a href="{{ $page.RelPermalink }}" class="log-link">
+          <time class="log-date" datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006.01.02" }}</time>
+          {{ if $isNew }}<span class="log-status status-new">[NEW]</span>{{ else }}<span class="log-status" aria-hidden="true"></span>{{ end }}
+          <span class="log-title">{{ $page.Title }}</span>
+        </a>
+      </li>
+      {{- end -}}
+    </ul>
+    <p class="log-archive-link">
+      <a id="log-archive-link" href="{{ "/posts/" | relURL }}">VIEW FULL ARCHIVE →</a>
+    </p>
+  </div>
+</section>

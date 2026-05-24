@@ -1,0 +1,159 @@
+<script>
+(function () {
+  'use strict';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  function init() {
+    setupCollapse();
+    setupFilter();
+  }
+
+  /* ----- Panel collapse with localStorage persistence ----- */
+  var STORAGE_KEY = 'rk.panel-state.v1';
+
+  function loadPanelState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+
+  function savePanelState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+    catch (e) { /* localStorage unavailable */ }
+  }
+
+  function setupCollapse() {
+    var state = loadPanelState();
+    var toggles = document.querySelectorAll('.panel-toggle');
+    toggles.forEach(function (btn) {
+      var target = btn.getAttribute('data-target');
+      var panel = document.querySelector('[data-panel="' + target + '"]');
+      if (!panel) return;
+
+      if (state[target] === 'collapsed') {
+        panel.classList.add('collapsed');
+        btn.textContent = '[+]';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      btn.addEventListener('click', function () {
+        var collapsed = panel.classList.toggle('collapsed');
+        btn.textContent = collapsed ? '[+]' : '[−]';
+        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+        state[target] = collapsed ? 'collapsed' : 'expanded';
+        savePanelState(state);
+      });
+    });
+  }
+
+  /* ----- Filter: INDEX clicks update LOG inline ----- */
+  var filterEl, filterValueEl, filterClearEl, archiveLink;
+
+  function setupFilter() {
+    filterEl = document.getElementById('log-filter');
+    filterValueEl = document.getElementById('log-filter-value');
+    filterClearEl = document.getElementById('log-filter-clear');
+    archiveLink = document.getElementById('log-archive-link');
+
+    // Category rows
+    document.querySelectorAll('.index-row').forEach(function (row) {
+      var btn = row.querySelector('button');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var type = row.getAttribute('data-filter-type');
+        var value = row.getAttribute('data-filter-value');
+        var isActive = row.classList.contains('active');
+        applyFilter(isActive ? null : type, isActive ? null : value);
+      });
+    });
+
+    // Tag pills
+    document.querySelectorAll('.tag-pill').forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var type = pill.getAttribute('data-filter-type');
+        var value = pill.getAttribute('data-filter-value');
+        var isActive = pill.classList.contains('active');
+        applyFilter(isActive ? null : type, isActive ? null : value);
+      });
+    });
+
+    if (filterClearEl) {
+      filterClearEl.addEventListener('click', function () {
+        applyFilter(null, null);
+      });
+    }
+
+    // On load: parse URL hash for shareable filter state
+    var hash = window.location.hash.slice(1);
+    if (hash) {
+      var parts = hash.split('=');
+      if (parts.length === 2) {
+        var type = parts[0] === 'cat' ? 'category' : (parts[0] === 'tag' ? 'tag' : null);
+        if (type && parts[1]) applyFilter(type, parts[1]);
+      }
+    }
+  }
+
+  function applyFilter(type, value) {
+    // Reset all active states
+    document.querySelectorAll('.index-row, .tag-pill').forEach(function (el) {
+      el.classList.remove('active');
+    });
+
+    // Set active state on matching element
+    if (type && value) {
+      var sel = type === 'category'
+        ? '.index-row[data-filter-value="' + value + '"]'
+        : '.tag-pill[data-filter-value="' + value + '"]';
+      var el = document.querySelector(sel);
+      if (el) el.classList.add('active');
+    }
+
+    // Filter LOG entries
+    var entries = document.querySelectorAll('.log-entry');
+    entries.forEach(function (entry) {
+      if (!type || !value) {
+        entry.hidden = false;
+        return;
+      }
+      var data = type === 'category'
+        ? (entry.getAttribute('data-categories') || '')
+        : (entry.getAttribute('data-tags') || '');
+      var items = data.split(' ').filter(Boolean);
+      entry.hidden = items.indexOf(value) === -1;
+    });
+
+    // Update filter header + URL + archive link
+    if (type && value) {
+      if (filterEl) filterEl.hidden = false;
+      if (filterValueEl) {
+        filterValueEl.textContent = type.toUpperCase() + ': ' + value.toUpperCase();
+      }
+      try {
+        history.replaceState(null, '', '#' + (type === 'category' ? 'cat' : 'tag') + '=' + value);
+      } catch (e) {}
+      if (archiveLink) {
+        var path = type === 'category' ? '/categories/' : '/tags/';
+        archiveLink.href = path + value + '/';
+        archiveLink.textContent = 'VIEW IN ' + (type === 'category' ? 'CATEGORY' : 'TAG') + ' →';
+      }
+    } else {
+      if (filterEl) filterEl.hidden = true;
+      if (filterValueEl) filterValueEl.textContent = '';
+      try {
+        if (window.location.hash) {
+          history.replaceState(null, '', window.location.pathname);
+        }
+      } catch (e) {}
+      if (archiveLink) {
+        archiveLink.href = '/posts/';
+        archiveLink.textContent = 'VIEW FULL ARCHIVE →';
+      }
+    }
+  }
+})();
+</script>

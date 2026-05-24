@@ -1,0 +1,24 @@
+{{- with site.Data.journal -}}
+<section class="panel panel-journal" data-panel="journal">
+  <header class="panel-header">
+    <h2 class="panel-title">[JOURNAL]</h2>
+    <button class="panel-toggle" type="button" aria-label="Toggle JOURNAL panel" aria-expanded="true" data-target="journal">[−]</button>
+  </header>
+  <div class="panel-body">
+    <ul class="journal-list">
+      {{ range first 5 . }}
+      <li class="journal-entry">
+        <time class="journal-date" datetime="{{ .date }}">{{ .date }}</time>
+        <span class="journal-note">
+          {{- if .link -}}
+            <a href="{{ .link }}">{{ .note | safeHTML }}</a>
+          {{- else -}}
+            {{ .note | safeHTML }}
+          {{- end -}}
+        </span>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{- end -}}

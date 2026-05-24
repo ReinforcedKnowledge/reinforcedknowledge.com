@@ -1,0 +1,119 @@
+{{ define "main" }}
+
+{{- /* Renders /posts/, /categories/<x>/, /tags/<y>/.
+       Term pages get a scoped header ([ MANIFEST · PYTHON ] / [ MANIFEST · #UV ]).
+       Section pages get the full archive ([ MANIFEST ]).
+       Drafts and meta pages (home/about/blog with meta=true) are filtered out. */ -}}
+
+{{- $isTerm     := eq .Kind "term" -}}
+{{- $termPlural := "" -}}
+{{- $termName   := "" -}}
+{{- if $isTerm -}}
+  {{- $termPlural = .Data.Plural -}}
+  {{- $termName   = .Title -}}
+{{- end -}}
+
+{{- $articles := slice -}}
+{{- range .Pages -}}
+  {{- if and (not .Draft) (not .Params.meta) -}}
+    {{- $articles = $articles | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $articles = sort $articles "Date" "desc" -}}
+{{- $count    := len $articles -}}
+
+{{- $header := "[ MANIFEST ]" -}}
+{{- if $isTerm -}}
+  {{- if eq $termPlural "categories" -}}
+    {{- $header = printf "[ MANIFEST · %s ]" (upper $termName) -}}
+  {{- else -}}
+    {{- $header = printf "[ MANIFEST · #%s ]" (upper $termName) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Year range + per-year counts. The year marker rows need a count;
+       precompute once rather than re-scanning inside the entry loop. */ -}}
+{{- $years      := slice -}}
+{{- $yearCounts := dict -}}
+{{- range $articles -}}
+  {{- $y := .Date.Format "2006" -}}
+  {{- $years = $years | append $y -}}
+  {{- $yearCounts = merge $yearCounts (dict $y (add (default 0 (index $yearCounts $y)) 1)) -}}
+{{- end -}}
+{{- $uniqYears  := uniq $years -}}
+{{- $multiYear  := gt (len $uniqYears) 1 -}}
+
+{{- /* Meta line under the header. Empty case shipped via the empty-state block. */ -}}
+{{- $meta := "" -}}
+{{- if eq $count 0 -}}
+  {{- $meta = "" -}}
+{{- else if $isTerm -}}
+  {{- $word := cond (eq $count 1) "entry" "entries" -}}
+  {{- if eq $termPlural "categories" -}}
+    {{- $meta = printf "// %d %s · in %s" $count $word (upper $termName) -}}
+  {{- else -}}
+    {{- $meta = printf "// %d %s · tagged #%s" $count $word (upper $termName) -}}
+  {{- end -}}
+{{- else if $multiYear -}}
+  {{- $yearHigh := (index $articles 0).Date.Format "2006" -}}
+  {{- $yearLow  := (index $articles (sub $count 1)).Date.Format "2006" -}}
+  {{- $meta = printf "// %d entries · spanning %s / %s" $count $yearLow $yearHigh -}}
+{{- else -}}
+  {{- $word := cond (eq $count 1) "entry" "entries" -}}
+  {{- $meta = printf "// %d %s" $count $word -}}
+{{- end -}}
+
+<main class="manifest">
+  <header class="manifest-header">
+    <h1 class="manifest-title">{{ $header }}</h1>
+    {{ with $meta }}<p class="manifest-meta">{{ . }}</p>{{ end }}
+  </header>
+
+  {{- if eq $count 0 -}}
+    <p class="manifest-empty">// no transmissions in this channel.</p>
+  {{- else -}}
+    {{- $shouldGroup := $multiYear -}}
+    <ol class="manifest-entries">
+      {{- $lastYear := "" -}}
+      {{- range $articles -}}
+        {{- $thisYear      := .Date.Format "2006" -}}
+        {{- $thisYearCount := index $yearCounts $thisYear -}}
+        {{- if and $shouldGroup (ne $thisYear $lastYear) -}}
+          <li class="manifest-year">
+            <span class="manifest-year-num">{{ $thisYear }}</span>
+            <span class="manifest-year-rule" aria-hidden="true"></span>
+            <span class="manifest-year-count">{{ $thisYearCount }} {{ cond (eq $thisYearCount 1) "entry" "entries" }}</span>
+          </li>
+          {{- $lastYear = $thisYear -}}
+        {{- end -}}
+        {{- $isNew := lt (sub now.Unix .Date.Unix) 604800 -}}
+        <li class="manifest-entry">
+          <p class="manifest-entry-kicker">
+            <time class="manifest-entry-date" datetime="{{ .Date.Format "2006-01-02" }}">// {{ .Date.Format "2006.01.02" }}</time>
+            {{- with .Params.categories -}}
+              {{- range . -}}
+                <span class="manifest-entry-kicker-sep" aria-hidden="true">·</span>
+                <a class="manifest-entry-category" href="{{ printf "/categories/%s/" (. | urlize) | relURL }}">{{ . | upper }}</a>
+              {{- end -}}
+            {{- end -}}
+            {{ if $isNew }}<span class="manifest-entry-new">[NEW]</span>{{ end }}
+          </p>
+          <h2 class="manifest-entry-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          {{- with .Description -}}
+            <p class="manifest-entry-description">{{ . }}</p>
+          {{- end -}}
+          {{- with .Params.tags -}}
+            <ul class="manifest-entry-tags" aria-label="Tags">
+              {{- range . -}}
+                <li><a class="tag-pill tag-pill--cool" href="{{ printf "/tags/%s/" (. | urlize) | relURL }}">{{ . }}</a></li>
+              {{- end -}}
+            </ul>
+          {{- end -}}
+        </li>
+      {{- end -}}
+    </ol>
+  {{- end -}}
+</main>
+{{ end }}

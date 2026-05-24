@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $toc := replaceRE ` id="TableOfContents"` "" .TableOfContents }}
+{{ $hasToc := and .TableOfContents (in .TableOfContents "<li>") }}
+<main class="article">
+
+  {{ partial "article-header.html" . }}
+
+  <div class="article-body-grid">
+
+    <div class="article-body">
+
+      {{ if $hasToc }}
+        <details class="article-toc-mobile">
+          <summary>On this page</summary>
+          {{ $toc | safeHTML }}
+        </details>
+      {{ end }}
+
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+
+      {{ partial "article-footer.html" . }}
+
+      {{ partial "giscus.html" . }}
+
+    </div>
+
+    {{ if $hasToc }}
+      <aside class="article-toc-rail" aria-label="Article table of contents">
+        <p class="article-toc-label">On this page</p>
+        {{ $toc | safeHTML }}
+      </aside>
+    {{ end }}
+
+  </div>
+
+  <a class="article-back-to-top" href="#article-top" id="back-to-top">↑ Back to top</a>
+
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ partial "article-scripts.html" . }}
+{{ end }}

@@ -1,0 +1,8 @@
+<footer class="article-footer">
+  {{ with .Params.tags }}
+    <div class="article-tags">
+      <span class="article-tags-label">Tags</span>
+      {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>{{ end }}
+    </div>
+  {{ end }}
+</footer>

@@ -1,0 +1,44 @@
+{{- $articles := .articles -}}
+{{- $cats := site.Taxonomies.categories -}}
+{{- $tags := site.Taxonomies.tags -}}
+
+<section class="panel panel-index" data-panel="index">
+  <header class="panel-header">
+    <h2 class="panel-title">[INDEX]</h2>
+    <button class="panel-toggle" type="button" aria-label="Toggle INDEX panel" aria-expanded="true" data-target="index">[−]</button>
+  </header>
+  <div class="panel-body">
+    <p class="index-stats">
+      {{ len $articles }} entries · {{ len $tags }} tags · {{ len $cats }} categories
+    </p>
+
+    {{ with $cats }}
+    <div class="index-section">
+      <h3 class="index-section-label">CATEGORIES</h3>
+      <ul class="index-categories">
+        {{ range .ByCount }}
+        <li class="index-row" data-filter-type="category" data-filter-value="{{ .Name | urlize }}">
+          <button type="button" class="row-button" aria-label="Filter by category {{ .Name }}, {{ .Count }} entries">
+            <span class="row-name">{{ .Name | upper }}</span>
+            <span class="row-count">{{ .Count }}</span>
+          </button>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{ with $tags }}
+    <div class="index-section">
+      <h3 class="index-section-label">TAGS</h3>
+      <ul class="index-tags">
+        {{ range .ByCount }}
+        <li>
+          <button type="button" class="tag-pill" data-filter-type="tag" data-filter-value="{{ .Name | urlize }}" aria-label="Filter by tag {{ .Name }}, {{ .Count }} entries">{{ .Name }}</button>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+</section>

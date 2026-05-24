@@ -1,0 +1,16 @@
+<header class="article-header" id="article-top">
+  <p class="article-kicker">
+    {{- with .Date -}}
+      <time datetime="{{ .Format "2006-01-02" }}">// {{ .Format "2006.01.02" }}</time>
+    {{- end -}}
+    {{- with .Params.categories -}}
+      {{- range . -}}
+        <span class="article-kicker-sep"></span><a href="{{ "/categories/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+      {{- end -}}
+    {{- end -}}
+  </p>
+  <h1 class="article-title">{{ .Title }}</h1>
+  {{ with .Description }}
+    <p class="article-description">{{ . }}</p>
+  {{ end }}
+</header>

@@ -1,0 +1,154 @@
+/* layout.css: page structure, grid, max-width containers.
+   References tokens.css for all values. */
+
+/* ARTICLE: outer container */
+
+.article {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
+
+/* ARTICLE BODY GRID: asymmetric body + sticky TOC rail
+   Two columns on wide viewports; collapses to single column below 1024px. */
+
+.article-body-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  .article-body-grid {
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    gap: var(--space-2xl);
+  }
+}
+
+.article-body {
+  min-width: 0;  /* prevent grid blowout from long unbreakable strings (code, URLs) */
+}
+
+/* TOC: desktop sticky rail vs. mobile <details> */
+
+.article-toc-rail {
+  display: none;
+}
+
+.article-toc-mobile {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .article-toc-rail {
+    display: block;
+    position: sticky;
+    top: var(--space-md);
+    align-self: start;
+    max-height: calc(100vh - var(--space-lg));
+    overflow-y: auto;
+    padding: var(--space-md);
+    border-left: 1px solid var(--border-0);
+
+    /* Subtle panel tone so the rail reads as embedded in the layout. */
+    background: oklch(19% 0.014 340 / 0.5);
+
+    /* Hide native scrollbar; affordance comes from the edge fade below. */
+    scrollbar-width: none;
+
+    /* Fade top and bottom edges so the rail reads as a viewing window
+       rather than a scrollable region with an OS scrollbar. Scroll still
+       works via wheel, trackpad, and keyboard. */
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black var(--space-md),
+      black calc(100% - var(--space-md)),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      black var(--space-md),
+      black calc(100% - var(--space-md)),
+      transparent 100%
+    );
+  }
+
+  .article-toc-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .article-toc-mobile {
+    display: none;
+  }
+}
+
+/* POST CONTENT: body column constraints
+   Prose at 65-75ch; figures/code/math get the wider column. */
+
+.post-content {
+  max-width: var(--measure-wide);
+  font-size: var(--fs-body);
+  line-height: 1.75;  /* light-on-dark: +0.05 over the base --lh-prose */
+}
+
+.post-content > p,
+.post-content > ul,
+.post-content > ol,
+.post-content > blockquote {
+  max-width: var(--measure-prose);
+}
+
+/* Allow figures, code blocks, and KaTeX display math to use the full content column */
+.post-content > figure,
+.post-content > pre,
+.post-content > .highlight,
+.post-content > .katex-display {
+  max-width: 100%;
+}
+
+/* Reduce padding on small screens for more reading space */
+@media (max-width: 640px) {
+  .article {
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+}
+
+/* HOME PAGE: multi-panel grid */
+
+.home {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
+
+.home-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "index log"
+    "journal journal";
+  align-items: start;
+}
+
+.panel-index { grid-area: index; }
+.panel-log { grid-area: log; }
+.panel-journal { grid-area: journal; }
+
+@media (max-width: 1024px) {
+  .home-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "index"
+      "log"
+      "journal";
+  }
+}
+
+@media (max-width: 640px) {
+  .home {
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+  }
+}

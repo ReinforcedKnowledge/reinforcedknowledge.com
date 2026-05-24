@@ -1,0 +1,196 @@
+<script>
+(function () {
+  'use strict';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  function init() {
+    setupScrollSpy();
+    setupCodeCopy();
+    setupCodeLanguageLabel();
+    setupBackToTop();
+  }
+
+  /* ----- Code block language label ----- */
+  function setupCodeLanguageLabel() {
+    var pres = document.querySelectorAll('.post-content pre');
+    pres.forEach(function (pre) {
+      if (pre.querySelector('.code-lang-label')) return;
+      var code = pre.querySelector('code[data-lang]');
+      if (!code) return;
+      var lang = code.getAttribute('data-lang');
+      if (!lang || lang === 'fallback') return;
+
+      var label = document.createElement('span');
+      label.className = 'code-lang-label';
+      label.textContent = '// ' + lang;
+      pre.insertBefore(label, pre.firstChild);
+    });
+  }
+
+  /* ----- TOC scroll-spy + rail auto-scroll ----- */
+  function setupScrollSpy() {
+    var headings = document.querySelectorAll('.post-content h2[id], .post-content h3[id]');
+    var links = document.querySelectorAll('.article-toc-rail a, .article-toc-mobile nav a');
+    if (!headings.length || !links.length) return;
+
+    var rail = document.querySelector('.article-toc-rail');
+
+    // Map<id, Array<link>> so both the desktop rail link and the mobile
+    // <details> link with the same href get the .active class together.
+    var linkMap = new Map();
+    links.forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        var id = href.slice(1);
+        if (!linkMap.has(id)) linkMap.set(id, []);
+        linkMap.get(id).push(a);
+      }
+    });
+
+    var activeId = null;
+    function setActive(id) {
+      if (activeId === id) return;
+      links.forEach(function (a) { a.classList.remove('active'); });
+      var targets = linkMap.get(id) || [];
+      targets.forEach(function (t) { t.classList.add('active'); });
+
+      // Auto-scroll the desktop rail so the active entry stays visible.
+      // Mobile <details> doesn't scroll internally, so skip there.
+      if (rail && window.getComputedStyle(rail).display !== 'none') {
+        var railTarget = null;
+        for (var i = 0; i < targets.length; i++) {
+          if (rail.contains(targets[i])) { railTarget = targets[i]; break; }
+        }
+        if (railTarget) scrollRailToTarget(rail, railTarget);
+      }
+
+      activeId = id;
+    }
+
+    function scrollRailToTarget(rail, target) {
+      var railRect = rail.getBoundingClientRect();
+      var targetRect = target.getBoundingClientRect();
+      var padding = 48;
+
+      var targetTopInRail = targetRect.top - railRect.top + rail.scrollTop;
+      var targetBottomInRail = targetTopInRail + target.offsetHeight;
+
+      var visibleTop = rail.scrollTop + padding;
+      var visibleBottom = rail.scrollTop + rail.clientHeight - padding;
+
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var behavior = reduced ? 'auto' : 'smooth';
+
+      if (targetTopInRail < visibleTop) {
+        rail.scrollTo({ top: targetTopInRail - padding, behavior: behavior });
+      } else if (targetBottomInRail > visibleBottom) {
+        rail.scrollTo({
+          top: targetBottomInRail - rail.clientHeight + padding,
+          behavior: behavior
+        });
+      }
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      var visible = entries.filter(function (e) { return e.isIntersecting; });
+      if (!visible.length) return;
+      visible.sort(function (a, b) {
+        return a.boundingClientRect.top - b.boundingClientRect.top;
+      });
+      var id = visible[0].target.id;
+      if (id) setActive(id);
+    }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+
+    headings.forEach(function (h) { observer.observe(h); });
+  }
+
+  /* ----- Code copy buttons ----- */
+  function setupCodeCopy() {
+    var pres = document.querySelectorAll('.post-content pre');
+    pres.forEach(function (pre) {
+      if (pre.querySelector('.code-copy')) return;
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'code-copy';
+      btn.textContent = 'copy';
+      btn.setAttribute('aria-label', 'Copy code to clipboard');
+      pre.appendChild(btn);
+
+      btn.addEventListener('click', function () {
+        var clone = pre.cloneNode(true);
+        clone.querySelectorAll('.code-copy').forEach(function (b) { b.remove(); });
+        var code = clone.innerText;
+
+        var done = function () {
+          btn.textContent = 'copied ✓';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.textContent = 'copy';
+            btn.classList.remove('copied');
+          }, 1500);
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(done).catch(function () {
+            btn.textContent = 'error';
+            setTimeout(function () { btn.textContent = 'copy'; }, 1500);
+          });
+        } else {
+          // Fallback for old browsers
+          var textarea = document.createElement('textarea');
+          textarea.value = code;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            done();
+          } catch (e) {
+            btn.textContent = 'error';
+          }
+          document.body.removeChild(textarea);
+        }
+      });
+    });
+  }
+
+  /* ----- Back to top fade-in ----- */
+  function setupBackToTop() {
+    var btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      if (window.scrollY > window.innerHeight * 0.5) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }, { passive: true });
+
+    update();
+
+    btn.addEventListener('click', function (e) {
+      var target = document.getElementById('article-top');
+      if (!target) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    });
+  }
+})();
+</script>

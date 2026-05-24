@@ -1,0 +1,40 @@
+baseURL = "https://reinforcedknowledge.com"
+locale = "en-us"
+title = "Reinforced Knowledge"
+
+[params]
+  description = "In-Depth Machine Learning Knowledge"
+  author = "Yakine Tahtah"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block  = [["$$", "$$"], ["\\[", "\\]"]]
+    inline = [["$", "$"],   ["\\(", "\\)"]]
+
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+  guessSyntax = true
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+  ordered = false
+
+[params.giscus]
+  repo = ""
+  repoId = ""
+  category = "Announcements"
+  categoryId = ""
+  theme = "dark"
+
+[params.social]
+  github = "https://github.com/ReinforcedKnowledge"
+  x = "https://x.com/RfK_001"
+  reddit = "https://www.reddit.com/user/ReinforcedKnowledge/"
+  linkedin = "https://www.linkedin.com/in/tahtahyakine/"
+  youtube = "https://www.youtube.com/@reinforcedknowledge"

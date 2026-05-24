@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+{{- /* Articles are posts that are published (not drafts) and not marked
+       as meta pages. Meta pages (home.md, about.md, blog.md) carry
+       `meta = true` in their frontmatter. Articles may or may not have
+       categories; uncategorized articles still appear in LOG but contribute
+       nothing to the CATEGORIES list. */ -}}
+{{- $articles := slice -}}
+{{- range (where .Site.RegularPages "Section" "posts") -}}
+  {{- if and (not .Draft) (not .Params.meta) -}}
+    {{- $articles = $articles | append . -}}
+  {{- end -}}
+{{- end -}}
+
+<main class="home">
+  <div class="home-grid">
+    {{ partial "home-index.html" (dict "articles" $articles) }}
+    {{ partial "home-log.html" (dict "articles" $articles) }}
+    {{ partial "home-journal.html" . }}
+  </div>
+</main>
+{{ end }}
+
+{{ define "scripts" }}
+  {{ partial "home-scripts.html" . }}
+{{ end }}
