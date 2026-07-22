@@ -307,6 +307,259 @@
   margin-top: var(--space-2xs);
 }
 
+/* Reusable article figure: one centered responsive width for every chart. */
+.post-content .article-figure {
+  inline-size: 100%;
+  max-inline-size: var(--measure-wide);
+  margin: var(--space-lg) auto;
+}
+
+.post-content .article-figure__link {
+  display: block;
+  inline-size: 100%;
+}
+
+.post-content .article-figure__image {
+  inline-size: 100%;
+  block-size: auto;
+  margin: 0 auto;
+}
+
+.post-content .article-figure__caption {
+  max-inline-size: var(--measure-prose);
+  margin: var(--space-2xs) auto 0;
+}
+
+/* Wide data tables: preserve column geometry and scroll only when necessary. */
+.post-content .article-data-table-scroll {
+  max-width: 100%;
+  margin: var(--space-md) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+.post-content .article-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-content .article-data-table-v1 {
+  min-width: 49rem;
+}
+
+.post-content .article-data-table-budgets {
+  min-width: 36rem;
+}
+
+.post-content .article-data-table th,
+.post-content .article-data-table td {
+  padding: var(--space-xs) clamp(1.25rem, 2.5vw, 2.75rem);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.post-content .article-data-table th {
+  padding-top: 0;
+  padding-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.post-content .article-data-table tbody tr:last-child td {
+  padding-bottom: 0;
+}
+
+/* COMET-QE explainer: keep the terminology hierarchy and alignment
+   approximations visible without turning the prose into another data table. */
+.post-content .comet-taxonomy,
+.post-content .comet-alignment-demo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+  max-width: 100%;
+  margin: var(--space-md) 0;
+}
+
+.post-content .comet-taxonomy-item,
+.post-content .comet-mode-card {
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--border-0);
+  border-radius: var(--radius-md);
+  background: var(--bg-1);
+}
+
+.post-content .comet-taxonomy-index,
+.post-content .comet-mode-heading {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--accent-cool);
+}
+
+.post-content .comet-taxonomy-item p,
+.post-content .comet-mode-card p {
+  max-width: none;
+  margin: var(--space-xs) 0 0;
+  color: var(--fg-1);
+  font-size: var(--fs-label);
+  line-height: var(--lh-prose);
+}
+
+.post-content .comet-taxonomy-item strong {
+  color: var(--fg-0);
+}
+
+.post-content .comet-mode-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-sm);
+}
+
+.post-content .comet-mode-heading code {
+  color: var(--fg-0);
+  text-transform: none;
+}
+
+.post-content .comet-mode-heading span {
+  color: var(--fg-2);
+}
+
+.post-content .comet-pair-stack {
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.post-content .comet-pair-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.post-content .comet-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: var(--space-lg);
+  padding: var(--space-3xs) var(--space-2xs);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-snug);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.post-content .comet-chip-source {
+  color: var(--accent-warm-soft);
+  border: 1px solid var(--accent-warm-deep);
+}
+
+.post-content .comet-chip-target {
+  color: var(--accent-cool-soft);
+  border: 1px solid var(--accent-cool-deep);
+}
+
+.post-content .comet-pair-arrow,
+.post-content .comet-recovery-arrow {
+  font-family: var(--font-mono);
+  color: var(--fg-2);
+  text-align: center;
+}
+
+.post-content .comet-mode-card-provenance {
+  border-style: dashed;
+}
+
+.post-content .comet-recovery-flow {
+  display: grid;
+  gap: var(--space-2xs);
+  justify-items: stretch;
+}
+
+.post-content .comet-recovery-flow > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2xs);
+}
+
+.post-content .comet-chip-result {
+  color: var(--fg-1);
+  border: 1px solid var(--border-0);
+}
+
+.post-content .comet-decision-walkthrough {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 100%;
+  margin: var(--space-md) 0;
+}
+
+.post-content .comet-example-card {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.post-content .comet-example-card .comet-mode-heading,
+.post-content .comet-example-card p {
+  margin: 0;
+}
+
+.post-content .comet-example-card strong {
+  color: var(--fg-0);
+}
+
+.post-content .comet-example-calculation {
+  display: grid;
+  gap: var(--space-3xs);
+  min-width: 0;
+  padding: var(--space-xs) var(--space-sm);
+  border-left: 2px solid var(--accent-cool-deep);
+  border-radius: var(--radius-sm);
+  background: var(--bg-2);
+  color: var(--fg-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-snug);
+}
+
+.post-content .comet-example-calculation span {
+  overflow-wrap: anywhere;
+}
+
+.post-content .comet-example-result {
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--border-0);
+}
+
+.post-content .comet-zip-example {
+  margin: var(--space-md) 0;
+}
+
+@media (max-width: 640px) {
+  .post-content .comet-taxonomy,
+  .post-content .comet-alignment-demo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .post-content .comet-taxonomy-item,
+  .post-content .comet-mode-card {
+    padding: var(--space-sm);
+  }
+}
+
 /* KaTeX display math: center, allow horizontal scroll if overflowing */
 .post-content .katex-display {
   margin: var(--space-md) 0;

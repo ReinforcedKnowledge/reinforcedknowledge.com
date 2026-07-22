@@ -1,0 +1,20 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $caption := .Get "caption" -}}
+{{- $label := .Get "label" -}}
+{{- $width := .Get "width" -}}
+{{- $height := .Get "height" -}}
+<figure class="article-figure">
+  <a class="article-figure__link" href="{{ $src }}" aria-label="{{ $label }}">
+    <img
+      class="article-figure__image"
+      src="{{ $src }}"
+      alt="{{ $alt }}"
+      width="{{ $width }}"
+      height="{{ $height }}"
+      loading="lazy"
+      decoding="async"
+    >
+  </a>
+  <figcaption class="article-figure__caption">{{ $caption }}</figcaption>
+</figure>
