@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2244" height="1628" viewBox="0 0 2244 1628" role="img" aria-labelledby="title desc">
+<title id="title">DDP reducer state has an age</title>
+<desc id="desc">The continuous process has already rebuilt its reducer into 61 buckets. A newly resumed DDP wrapper begins with one constructor bucket. Priming and rebuilding before the first real training batch gives both branches the mature layout.</desc>
+<rect width="2244" height="1628" fill="#121017"/>
+<text x="120" y="112" fill="#d66ab7" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="700" text-anchor="start" opacity="1" letter-spacing="3">HIDDEN PROCESS HISTORY</text>
+<text x="120" y="190" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="58" font-weight="650" text-anchor="start" opacity="1" letter-spacing="0">Reducer state has an age</text>
+<text x="120" y="244" fill="#aaa2af" font-family="'Source Serif 4', Georgia, serif" font-size="27" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">A checkpoint at update 5 does not serialize the DDP wrapper that will reduce update 6.</text>
+<line x1="120" y1="286" x2="2124" y2="286" stroke="#39333f" stroke-width="2" opacity="1"/>
+<rect x="120" y="358" width="184" height="46" rx="23" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="212.0" y="389" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="750" text-anchor="middle" opacity="1" letter-spacing="0">CONTINUOUS</text>
+<line x1="340" y1="478" x2="2040" y2="478" stroke="#39333f" stroke-width="3" opacity="1"/>
+<circle cx="340" cy="478" r="10" fill="#98d66d" stroke="none" stroke-width="1"/>
+<circle cx="1110" cy="478" r="10" fill="#98d66d" stroke="none" stroke-width="1"/>
+<circle cx="1810" cy="478" r="10" fill="#98d66d" stroke="none" stroke-width="1"/>
+<rect x="120" y="738" width="139" height="46" rx="23" fill="#e36f78" stroke="none" stroke-width="1" opacity="1"/>
+<text x="189.5" y="769" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="750" text-anchor="middle" opacity="1" letter-spacing="0">RESUMED</text>
+<line x1="340" y1="858" x2="2040" y2="858" stroke="#39333f" stroke-width="3" opacity="1"/>
+<circle cx="340" cy="858" r="10" fill="#e36f78" stroke="none" stroke-width="1"/>
+<circle cx="1110" cy="858" r="10" fill="#e36f78" stroke="none" stroke-width="1"/>
+<circle cx="1810" cy="858" r="10" fill="#e36f78" stroke="none" stroke-width="1"/>
+<rect x="120" y="1118" width="154" height="46" rx="23" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<text x="197.0" y="1149" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="750" text-anchor="middle" opacity="1" letter-spacing="0">REPAIRED</text>
+<line x1="340" y1="1238" x2="2040" y2="1238" stroke="#39333f" stroke-width="3" opacity="1"/>
+<circle cx="340" cy="1238" r="10" fill="#78a6d6" stroke="none" stroke-width="1"/>
+<circle cx="1110" cy="1238" r="10" fill="#78a6d6" stroke="none" stroke-width="1"/>
+<circle cx="1810" cy="1238" r="10" fill="#78a6d6" stroke="none" stroke-width="1"/>
+<text x="340" y="340" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="400" text-anchor="middle" opacity="1" letter-spacing="0">constructor</text>
+<text x="1110" y="340" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="400" text-anchor="middle" opacity="1" letter-spacing="0">checkpoint boundary</text>
+<text x="1810" y="340" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="400" text-anchor="middle" opacity="1" letter-spacing="0">update 6 all-reduce</text>
+<text x="340" y="366" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="600" text-anchor="start" opacity="1" letter-spacing="0">first synchronized backward</text>
+<rect x="340" y="390" width="710" height="54" rx="8" fill="#d69a6d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="695.0" y="426" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="750" text-anchor="middle" opacity="1" letter-spacing="0">1 constructor bucket</text>
+<line x1="1060" y1="417" x2="1100" y2="417" stroke="#98d66d" stroke-width="4" opacity="1"/>
+<path d="M 1100 417 L 1082 406 L 1082 428 Z" fill="#98d66d"/>
+<text x="1120" y="366" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="600" text-anchor="start" opacity="1" letter-spacing="0">one-time rebuild already consumed</text>
+<rect x="1120.0" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1177.0833333333333" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1234.1666666666667" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1291.25" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1348.3333333333333" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1405.4166666666667" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1462.5" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1519.5833333333335" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1576.6666666666667" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1633.75" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1690.8333333333335" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1747.9166666666667" y="390" width="52.083333333333336" height="54" rx="3" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1822" y="426" fill="#98d66d" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="22" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">61 buckets</text>
+<text x="1120" y="508" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">61 actual buckets, shown schematically</text>
+<text x="340" y="806" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="27" font-weight="650" text-anchor="start" opacity="1" letter-spacing="0">restore checkpoint 5 into a fresh DDP wrapper</text>
+<line x1="1070" y1="797" x2="1100" y2="797" stroke="#e36f78" stroke-width="4" opacity="1"/>
+<path d="M 1100 797 L 1082 786 L 1082 808 Z" fill="#e36f78"/>
+<text x="1120" y="746" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="600" text-anchor="start" opacity="1" letter-spacing="0">first resumed synchronized backward</text>
+<rect x="1120" y="770" width="680" height="54" rx="8" fill="#e36f78" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1460.0" y="806" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="750" text-anchor="middle" opacity="1" letter-spacing="0">1 constructor bucket</text>
+<text x="1120" y="888" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">fresh reducer at the resumed boundary</text>
+<text x="340" y="1186" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="27" font-weight="650" text-anchor="start" opacity="1" letter-spacing="0">restore protected state</text>
+<line x1="730" y1="1177" x2="770" y2="1177" stroke="#78a6d6" stroke-width="4" opacity="1"/>
+<path d="M 770 1177 L 752 1166 L 752 1188 Z" fill="#78a6d6"/>
+<rect x="790" y="1134" width="280" height="86" rx="10" fill="#211d29" stroke="#78a6d6" stroke-width="2" opacity="1"/>
+<text x="930" y="1170" fill="#78a6d6" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle" opacity="1" letter-spacing="0">synthetic backward</text>
+<text x="930" y="1200" fill="#78a6d6" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="700" text-anchor="middle" opacity="1" letter-spacing="0">explicit rebuild</text>
+<line x1="1080" y1="1177" x2="1140" y2="1177" stroke="#78a6d6" stroke-width="4" opacity="1"/>
+<path d="M 1140 1177 L 1122 1166 L 1122 1188 Z" fill="#78a6d6"/>
+<text x="1160" y="1126" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="600" text-anchor="start" opacity="1" letter-spacing="0">next training update</text>
+<rect x="1160.0" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1213.75" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1267.5" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1321.25" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1375.0" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1428.75" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1482.5" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1536.25" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1590.0" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1643.75" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1697.5" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<rect x="1751.25" y="1150" width="48.75" height="54" rx="3" fill="#78a6d6" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1822" y="1186" fill="#78a6d6" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="22" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">61 buckets</text>
+<text x="1160" y="1268" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">61 buckets before data exposure</text>
+<rect x="1430" y="590" width="610" height="104" rx="12" fill="#211d29" stroke="#e36f78" stroke-width="2" opacity="1"/>
+<text x="1735" y="632" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="25" font-weight="650" text-anchor="middle" opacity="1" letter-spacing="0">same local gradients</text>
+<text x="1735" y="670" fill="#e36f78" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="25" font-weight="700" text-anchor="middle" opacity="1" letter-spacing="0">different reduction grouping</text>
+<line x1="120" y1="1536" x2="2124" y2="1536" stroke="#39333f" stroke-width="2" opacity="1"/>
+<text x="120" y="1580" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="19" font-weight="600" text-anchor="start" opacity="1" letter-spacing="1">FIG_04  ·  Dynamic DDP bucket topology is reconstructed process state</text>
+</svg>

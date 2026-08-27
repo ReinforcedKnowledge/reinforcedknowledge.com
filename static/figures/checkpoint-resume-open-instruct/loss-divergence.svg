@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Loss residual after resuming</title>
+  <desc id="desc">A bar chart shows resumed loss minus continuous loss for updates 6 through 10 in the original branch experiment. Update 6 is exactly zero. Updates 7 through 10 are nonzero, with values 3.92 times ten to the minus five, 1.54 times ten to the minus four, 4.79 times ten to the minus five, and 3.60 times ten to the minus five. A timeline shows that update 6 loss is measured before backward, DDP reduction, and AdamW, while update 7 loss observes the changed parameters.</desc>
+
+  <rect width="1800" height="1050" fill="#121017"/>
+
+  <text x="100" y="105" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="54" font-weight="650">Loss residual after resuming</text>
+  <line x1="100" y1="150" x2="1700" y2="150" stroke="#39333f" stroke-width="2"/>
+
+  <text x="30" y="455" transform="rotate(-90 30 455)" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">Δ loss</text>
+
+  <line x1="260" y1="260" x2="1680" y2="260" stroke="#39333f" stroke-width="2"/>
+  <line x1="260" y1="390" x2="1680" y2="390" stroke="#39333f" stroke-width="2"/>
+  <line x1="260" y1="520" x2="1680" y2="520" stroke="#39333f" stroke-width="2"/>
+  <line x1="260" y1="650" x2="1680" y2="650" stroke="#625b68" stroke-width="3"/>
+
+  <text x="235" y="270" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="30" text-anchor="end">1.5×10⁻⁴</text>
+  <text x="235" y="400" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="30" text-anchor="end">1.0×10⁻⁴</text>
+  <text x="235" y="530" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="30" text-anchor="end">0.5×10⁻⁴</text>
+  <text x="235" y="660" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="30" text-anchor="end">0</text>
+
+  <line x1="295" y1="647" x2="385" y2="647" stroke="#e36f78" stroke-width="6"/>
+  <text x="340" y="614" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">0</text>
+
+  <rect x="605" y="548.0" width="90" height="102.0" rx="4" fill="#e36f78"/>
+  <text x="650" y="518" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">3.92×10⁻⁵</text>
+
+  <rect x="915" y="250.1" width="90" height="399.9" rx="4" fill="#e36f78"/>
+  <text x="960" y="220" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">1.54×10⁻⁴</text>
+
+  <rect x="1225" y="525.5" width="90" height="124.5" rx="4" fill="#e36f78"/>
+  <text x="1270" y="496" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">4.79×10⁻⁵</text>
+
+  <rect x="1535" y="556.3" width="90" height="93.7" rx="4" fill="#e36f78"/>
+  <text x="1580" y="526" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="35" font-weight="700" text-anchor="middle">3.60×10⁻⁵</text>
+
+  <text x="340" y="704" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">6</text>
+  <text x="650" y="704" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">7</text>
+  <text x="960" y="704" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">8</text>
+  <text x="1270" y="704" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">9</text>
+  <text x="1580" y="704" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="32" text-anchor="middle">10</text>
+  <text x="960" y="748" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" text-anchor="middle">optimizer update</text>
+
+  <text x="340" y="795" fill="#d69a6d" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="middle">loss exact</text>
+  <text x="650" y="795" fill="#e36f78" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="middle">first nonzero</text>
+
+  <text x="250" y="875" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="36" font-weight="650" text-anchor="middle">update 6 forward</text>
+  <text x="250" y="917" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="29" text-anchor="middle">loss is measured</text>
+  <line x1="440" y1="895" x2="610" y2="895" stroke="#625b68" stroke-width="3"/>
+  <path d="M610 895 l-17 -10 v20 z" fill="#625b68"/>
+
+  <text x="900" y="875" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="36" font-weight="650" text-anchor="middle">backward → DDP → AdamW</text>
+  <text x="900" y="917" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="29" text-anchor="middle">the training states separate</text>
+  <line x1="1190" y1="895" x2="1360" y2="895" stroke="#625b68" stroke-width="3"/>
+  <path d="M1360 895 l-17 -10 v20 z" fill="#625b68"/>
+
+  <text x="1550" y="875" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="36" font-weight="650" text-anchor="middle">update 7 forward</text>
+  <text x="1550" y="917" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="29" text-anchor="middle">loss exposes the split</text>
+
+  <line x1="100" y1="970" x2="1700" y2="970" stroke="#39333f" stroke-width="2"/>
+  <text x="100" y="1018" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="600" letter-spacing="1">FIG_02  ·  Loss residuals from the original branch experiment</text>
+</svg>

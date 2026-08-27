@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2244" height="1628" viewBox="0 0 2244 1628" role="img" aria-labelledby="title desc">
+<title id="title">The first differing boundary was after DDP reduction</title>
+<desc id="desc">Inputs, loss, live state, and accumulated rank-local gradients were exact. The continuous branch used 61 reducer buckets and the resumed branch used one. After all-reduce, 261 of 320 gradient tensors differed.</desc>
+<rect width="2244" height="1628" fill="#121017"/>
+<text x="120" y="112" fill="#d66ab7" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="24" font-weight="700" text-anchor="start" opacity="1" letter-spacing="3">EARLIEST-DIFFERENCE LADDER</text>
+<text x="120" y="190" fill="#eee8f0" font-family="'Source Serif 4', Georgia, serif" font-size="58" font-weight="650" text-anchor="start" opacity="1" letter-spacing="0">Do not compare only the final checkpoint</text>
+<text x="120" y="244" fill="#aaa2af" font-family="'Source Serif 4', Georgia, serif" font-size="27" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">Instrument every boundary until the last exact value and the first different value touch.</text>
+<line x1="120" y1="286" x2="2124" y2="286" stroke="#39333f" stroke-width="2" opacity="1"/>
+<rect x="190" y="340" width="1864" height="116" rx="12" fill="#1b1822" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="398" r="31" fill="#98d66d" stroke="none" stroke-width="1"/>
+<text x="260" y="408" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">01</text>
+<text x="330" y="388" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">Training inputs</text>
+<text x="330" y="424" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">tokens · targets · pack order</text>
+<rect x="1770" y="372" width="240" height="52" rx="26" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1890.0" y="407" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">EXACT</text>
+<line x1="260" y1="456" x2="260" y2="492" stroke="#98d66d" stroke-width="4" opacity="1"/>
+<rect x="190" y="492" width="1864" height="116" rx="12" fill="#211d29" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="550" r="31" fill="#98d66d" stroke="none" stroke-width="1"/>
+<text x="260" y="560" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">02</text>
+<text x="330" y="540" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">Forward boundary</text>
+<text x="330" y="576" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">loss = 0.8891351451286653</text>
+<rect x="1770" y="524" width="240" height="52" rx="26" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1890.0" y="559" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">EXACT</text>
+<line x1="260" y1="608" x2="260" y2="644" stroke="#98d66d" stroke-width="4" opacity="1"/>
+<rect x="190" y="644" width="1864" height="116" rx="12" fill="#1b1822" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="702" r="31" fill="#98d66d" stroke="none" stroke-width="1"/>
+<text x="260" y="712" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">03</text>
+<text x="330" y="692" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">Rank-local gradients</text>
+<text x="330" y="728" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">after no_sync + accumulation</text>
+<rect x="1710" y="676" width="300" height="52" rx="26" fill="#98d66d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1860.0" y="711" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">320 / 320 EXACT</text>
+<line x1="260" y1="760" x2="260" y2="796" stroke="#98d66d" stroke-width="4" opacity="1"/>
+<rect x="190" y="796" width="1864" height="116" rx="12" fill="#211d29" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="854" r="31" fill="#d69a6d" stroke="none" stroke-width="1"/>
+<text x="260" y="864" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">04</text>
+<text x="330" y="844" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">Reducer structure</text>
+<text x="330" y="880" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">continuous 61 · resumed 1</text>
+<rect x="1770" y="828" width="240" height="52" rx="26" fill="#d69a6d" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1890.0" y="863" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">DIFFERENT</text>
+<line x1="260" y1="912" x2="260" y2="948" stroke="#d69a6d" stroke-width="4" opacity="1"/>
+<rect x="190" y="948" width="1864" height="116" rx="12" fill="#1b1822" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="1006" r="31" fill="#e36f78" stroke="none" stroke-width="1"/>
+<text x="260" y="1016" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">05</text>
+<text x="330" y="996" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">Post-reduce gradients</text>
+<text x="330" y="1032" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">first numerical difference</text>
+<rect x="1700" y="980" width="310" height="52" rx="26" fill="#e36f78" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1855.0" y="1015" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">261 / 320 DIFFER</text>
+<line x1="260" y1="1064" x2="260" y2="1100" stroke="#e36f78" stroke-width="4" opacity="1"/>
+<rect x="190" y="1100" width="1864" height="116" rx="12" fill="#211d29" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="1158" r="31" fill="#e36f78" stroke="none" stroke-width="1"/>
+<text x="260" y="1168" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">06</text>
+<text x="330" y="1148" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">After clipping</text>
+<text x="330" y="1184" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">global norm is still bit-exact</text>
+<rect x="1700" y="1132" width="310" height="52" rx="26" fill="#e36f78" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1855.0" y="1167" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">261 / 320 DIFFER</text>
+<line x1="260" y1="1216" x2="260" y2="1252" stroke="#e36f78" stroke-width="4" opacity="1"/>
+<rect x="190" y="1252" width="1864" height="116" rx="12" fill="#1b1822" stroke="#39333f" stroke-width="2" opacity="1"/>
+<circle cx="260" cy="1310" r="31" fill="#d66ab7" stroke="none" stroke-width="1"/>
+<text x="260" y="1320" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">07</text>
+<text x="330" y="1300" fill="#eee8f0" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="31" font-weight="700" text-anchor="start" opacity="1" letter-spacing="0">After fused AdamW</text>
+<text x="330" y="1336" fill="#aaa2af" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="23" font-weight="400" text-anchor="start" opacity="1" letter-spacing="0">model 27 · optimizer 513</text>
+<rect x="1770" y="1284" width="240" height="52" rx="26" fill="#d66ab7" stroke="none" stroke-width="1" opacity="1"/>
+<text x="1890.0" y="1319" fill="#09080b" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="20" font-weight="800" text-anchor="middle" opacity="1" letter-spacing="0">DIFFERENT</text>
+<rect x="1230" y="778" width="744" height="62" rx="8" fill="#121017" stroke="#d69a6d" stroke-width="2" opacity="1"/>
+<text x="1602" y="819" fill="#d69a6d" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="21" font-weight="700" text-anchor="middle" opacity="1" letter-spacing="0">last structural difference before numerics split</text>
+<line x1="120" y1="1536" x2="2124" y2="1536" stroke="#39333f" stroke-width="2" opacity="1"/>
+<text x="120" y="1580" fill="#625b68" font-family="'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace" font-size="19" font-weight="600" text-anchor="start" opacity="1" letter-spacing="1">FIG_03  ·  Full-tensor localization, pinned 4 × A100 Qwen3.5 assay</text>
+</svg>
