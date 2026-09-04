@@ -355,6 +355,14 @@
   min-width: 36rem;
 }
 
+.post-content .article-data-table-wide {
+  min-width: 49rem;
+}
+
+.post-content .article-data-table-xwide {
+  min-width: 64rem;
+}
+
 .post-content .article-data-table th,
 .post-content .article-data-table td {
   padding: var(--space-xs) clamp(1.25rem, 2.5vw, 2.75rem);
